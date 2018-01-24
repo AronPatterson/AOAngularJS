@@ -96,7 +96,7 @@ function javascript() {
 
 // Combine all Angular into one file
 // In production, the file is minified
-function react() {
+function angular() {
   return gulp.src(PATHS.reactdir)
     .pipe(named())
     .pipe($.sourcemaps.init())
@@ -106,7 +106,7 @@ function react() {
     ))
     .pipe($.if(!PRODUCTION, $.sourcemaps.write()))
     .pipe($.concat('ao.app.min.js'))
-    .pipe(gulp.dest(PATHS.dist + '/react'));
+    .pipe(gulp.dest(PATHS.dist + '/angular'));
 }
 
 function mochaTesting() {
@@ -143,13 +143,13 @@ function watch() {
   //gulp.watch('min/**/*.html').on('all', gulp.series(copy)); // this watches the html content for changes
   gulp.watch('min/scss/**/*.scss').on('all', gulp.series(sass)); // SASS for changes
   gulp.watch('min/js/**/*.js').on('all', gulp.series(javascript)); // JS for changes
-  gulp.watch('min/react/**/*').on('all', gulp.series(react)); // Angular for changes
+  gulp.watch('min/angular/**/*').on('all', gulp.series(angular)); // Angular for changes
   gulp.watch('min/img/**/*').on('all', gulp.series(images)); // images for changes
 }
 
 // Build the "dist" folder by running all of the below tasks
 gulp.task('build',
- gulp.series(clean, gulp.parallel(sass, javascript, react, images)));
+ gulp.series(clean, gulp.parallel(sass, javascript, angular, images)));
 
 // Build the site, run the server, and watch for file changes
 gulp.task('default',
