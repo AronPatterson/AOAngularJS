@@ -1,0 +1,6 @@
+<div class="grid-x">
+	<section ng-attr-id="pageId-{{page.id}}" class="small-16 cell">
+		<h2>{{page.title.rendered}}</h2>
+		<div ng-bind-html="page.content.rendered | to_trusted"></div>
+	</section>
+</div>

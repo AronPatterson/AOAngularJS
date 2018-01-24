@@ -1,0 +1,91 @@
+// FRAMEWORK TOOLS //
+// These are tools that will rarely need to be changed.
+
+/** BASE **/
+@-ms-viewport {
+	width: device-width;
+}
+@viewport {
+	width: device-width;
+}
+
+// ARON BOX MODE
+div, section, article, aside {
+	// container tags are purple
+	border: 1px solid #b4d;
+}
+nav, header {
+	// nav/header tags are blue
+	border: 1px solid #00f;
+}
+table, thead, th, tbody, tfoot, tr, td {
+	// tables are aqua
+	border: 1px solid #0ff;
+}
+ul, ol {
+	// uls and ols are green
+	border: 1px solid #0f0;
+}
+li, p {
+	// lis and paragraphs are bright green
+	border: 1px solid #7f3;
+}
+.columns {
+	// columns are red
+	border: 1px solid #f00;
+}
+.row {
+	// initial rows are pink
+	border: 1px solid #f9c;
+	.row {
+		// embedded rows are purple/pink
+		border: 1px solid #f0c;
+	}
+}
+div, p, ul, li, section, article, aside, nav, header, table, thead, th, tbody, tfoot, tr, td, .columns, .row, .row .row {
+	border-width: $aron-box-mode;
+}
+
+// INLINE CLASSES
+// before you add something to this, make sure it's not already provided by Foundation
+// text-left, text-center, text-right -- float-left, float-center, float-right (clearfix to parent on floats)
+.absolute {
+	position: absolute!important;
+}
+.relative {
+	position: relative!important;
+}
+.none, .hidden, [hidden] {
+	display: none;
+}
+.sr-only {
+	// hidden for sighted users, but not screenreaders
+	overflow: hidden;
+	position: absolute;
+	top: auto;
+	left: -10000px;
+	width: 1px;
+	height: 1px;
+}
+// text styling
+.uppercase {
+	text-transform: uppercase;
+}
+.lightText {
+	color: $white;
+}
+.textShadow {
+	text-shadow: 2px 1px 2px $white;
+	&.darkText {
+		text-shadow: 2px 1px 2px $white;
+	}
+	&.lightText {
+		text-shadow: 2px 1px 2px $black;
+	}
+}
+
+// FIXES/HACKS
+table[style] {
+	// if a table has an inline styling, give it a max width, so it's impossible to break out of a container
+	max-width: 100%!important;
+}

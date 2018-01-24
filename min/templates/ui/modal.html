@@ -1,0 +1,11 @@
+<div class="large reveal" ng-attr-id="bpModalDesktop_{{ listing.site_tag }}">
+	<section class="text-center">
+		<h3 class="lightText">Desktop View</h3>
+		<a class="button secondary">Switch to Mobile Site</a>
+		<a class="button secondary" ng-href="{{ mvm.shortPath }}img/portfolio/mobile/full_size/site_{{ listing.site_tag }}.jpg" target="_blank"><i class="fa fa-external-link" aria-hidden="true"></i> Full Screenshot</a><br />
+		<img ng-src="{{ mvm.shortPath }}img/portfolio/desktop/full_size/site_{{ listing.site_tag }}.jpg" ng-attr-alt="{{ listing.site_name }} Desktop Full View" />
+	</section>
+	<button class="close-button" aria-label="Close modal" type="button">
+		<span aria-hidden="true">&times;</span>
+	</button>
+</div>

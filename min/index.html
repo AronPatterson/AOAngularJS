@@ -1,0 +1,113 @@
+<!doctype html>
+<html id="top" class="no-js" lang="en" ng-app="aoOnline">
+<head ng-csp>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<title>AroOnline; Front-End Web Developer, Custom Sites, SEO; Duluth, MN</title>
+	<base href="/">
+	<link rel="stylesheet" type="text/css" href="../css/app.css" />
+	<script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.7/angular.min.js" integrity="sha256-bs1GvtqRJyWn3a6f6BiFOdX9LK86qR4UuPKmLr5JXTE=" crossorigin="anonymous"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/webfont/1.6.28/webfontloader.js" integrity="sha256-4O4pS1SH31ZqrSO2A/2QJTVjTPqVe+jnYgOWUVr7EEc=" crossorigin="anonymous"></script>
+	<script>
+		WebFontConfig = {
+			google: {
+				families: ['Open Sans:normal,bold', 'Indie Flower:normal,bold']
+			},
+			timeout: 2000 // set the timeout to two seconds
+		};
+	</script>
+	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha256-NuCn4IvuZXdBaFKJOAcsU2Q3ZpwbdFisd5dux4jkQ5w=" crossorigin="anonymous" />
+	<link href="../img/favicon.ico" rel="shortcut icon" type="image/x-icon">
+</head>
+<body class="{{page.id}}" ng-controller="MainCtrl as mvm">
+<!--[if lt IE 9]>
+	<a href="http://browsehappy.com/"><div id="ltie9">
+	Woah buddy! Your browser is a bit out of date, there! It looks like you're using an old version of Internet Explorer. For the best experience on this site, please update your browser!
+	</div></a>
+<![endif]--> 
+<!-- START: #navContainer -->
+<header id="navContainer" class="grid-container">
+	<div class="grid-x">
+		<section class="small-8 small-offset-4 large-4 large-offset-0 cell text-center logoArea">
+			<a href="/" rel="home"><h1><img ng-src="{{ mvm.shortPath }}img/bnr_aron-mn.svg" alt="AroOnline - Aron Patterson's Web Developer Portfolio, Minnesota" /></h1></a>
+		</section>
+		<a class="sr-only" href="#mainContent" tabindex="-1">Skip to main content</a>
+		<!-- START: Nav -->
+		<nav class="small-16 large-12 cell align-self-bottom">
+			<div class="title-bar" data-responsive-toggle="mainNav" data-hide-for="large">
+				<div class="titleBarToggle" data-toggle="">
+					<button class="menu-icon" type="button"></button>
+					<div class="title-bar-title">Navigation</div>
+				</div>
+			</div>
+			<ul id="mainNav" class="menu large-horizontal medium-vertical small-text-center align-right" data-responsive-menu="accordion large-dropdown medium-accordion">
+				<li role="menuitem"><a class="homeNavLink" ng-href="/">Home</a></li>
+				<li role="menuitem"><a class="aboutNavLink" ng-href="/#!about">About</a></li>
+				<!--<li><a href="/#/resume">Resume</a></li>-->
+				<li role="menuitem"><a class="portNavLink" ng-href="/#!developer-portfolio">Portfolio</a></li>
+				<li role="menuitem"><a class="contactNavLink" ng-href="/#!contact">Contact</a></li>
+			</ul>
+		</nav>
+		<!-- END: /Nav -->
+	</div>
+</header> <!-- /.grid-container -->
+<!-- END: /#navContainer -->
+<!-- START: #mainContent -->
+<main id="mainContent" role="main">
+	<div id="contentBox" class="grid-container" ng-view></div>
+</main>
+<!-- END: #mainContent -->
+<!-- START: #siteFooter -->
+<footer id="siteFooter">
+	<div role="navigation grid-container">
+		<div class="footNav noPrint grid-x" role="navigation">
+			<ul class="small-16 cell menu">
+				<li><a class="homeNavLink" ng-href="/">Home</a></li>
+				<li><a class="aboutNavLink" ng-href="/#!about">About</a></li>
+				<!--<li><a href="/#/resume">Resume</a></li>-->
+				<li><a class="portNavLink" ng-href="/#!developer-portfolio">Portfolio</a></li>
+				<li><a class="contactNavLink" ng-href="/#!contact">Contact Me</a></li>
+			</ul>
+			<section id="socialMedia" class="small-16 cell text-center noPrint">
+				<ul>
+					<li class="liLogo"><a href="http://linkedin.com/in/aronpatterson" target="_blank"><span class="fa fa-linkedin fa-2x"></span></a></li>
+					<li class="gitLogo"><a href="https://github.com/AronPatterson" target="_blank"><span class="fa fa-git-square fa-2x"></span></a></li>
+					<li class="conLogo"><a ng-href="/#!contact"><span class="fa fa-envelope fa-2x"></span></a></li>
+				</ul>
+			</section>
+			<section class="small-16 cell text-center">
+				<p>Copyright &copy;2017 Aron Patterson<br />
+				AroOnline Web Design &amp; Development</p>
+			</section>
+		</div>
+	</div> <!-- /.grid-container -->
+</footer>
+<!-- END: /#siteFooter -->
+<!-- START: #cloudWrapper -->
+<div id="cloudWrapper" class="noPrint" aria-hidden="true">
+    <div class="cloud1">
+        <div class="floatCloud"></div>
+    </div>
+    <div class="cloud2">
+        <div class="floatCloud"></div>
+    </div>
+    <div class="cloud3">
+        <div class="floatCloud"></div>
+    </div>
+    <div class="cloud4">
+        <div class="floatCloud"></div>
+    </div>
+    <div class="cloud5">
+        <div class="floatCloud"></div>
+    </div>
+</div>
+<!-- END: /#cloudWrapper -->
+<a href="#top" ng-attr-class="backToTopBtn" title="Back to Top"><i class="fa fa-arrow-up"></i></a>
+<div class="modalContainer modalLoader"></div>
+<script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js" integrity="sha256-0rguYS0qgS6L4qVzANq4kjxPLtvnp5nn2nB5G1lWRv4=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="../angular/ao.app.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="../js/app.min.js"></script>
+</body>
+</html>

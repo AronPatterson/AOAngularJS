@@ -1,0 +1,10 @@
+<div ng-attr-id="pageId-{{vm.page.id}}" class="grid-x">
+	<section class="small-16 large-12 small-order-2 large-order-1 cell">
+			<h2>{{vm.page.title.rendered}}</h2>
+			<div ng-show="showLoader" class="text-center"><img src="{{ mvm.shortPath }}img/svg-loader.svg" /></div>
+			<div ng-bind-html="vm.page.content.rendered | to_trusted"></div>
+	</section>
+	<aside class="small-16 large-4 small-order-1 large-order-2 cell text-center contentAside">
+		<img ng-src="{{ mvm.shortPath }}img/content_aron-about.jpg" alt="Smiling Aron Looking Mildly Professional" />
+	</aside>
+</div>

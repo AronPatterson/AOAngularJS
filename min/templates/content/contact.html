@@ -1,0 +1,7 @@
+<div ng-attr-id="pageId-{{contactVm.page.id}}" class="grid-x">
+	<section class="small-16 cell">
+		<h1>{{contactVm.page.title.rendered}}</h1>
+		<div ng-show="showLoader" class="text-center"><img src="{{ mvm.shortPath }}img/svg-loader.svg" /></div>
+		<div ng-bind-html="contactVm.page.content.rendered | to_trusted"></div>
+	</section>
+</div>

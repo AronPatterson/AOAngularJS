@@ -1,0 +1,29 @@
+/* PRINT STYLES */
+@media print {
+	// GENERAL
+	.noPrint {
+		display: none;
+	}
+	// HEADER
+	.logoArea {
+		a::after {
+			content: ""!important;
+		}
+	}
+	#desktopNav {
+		display: none;
+	}
+	// CONTENT AREA
+	#mainContent {
+		*[data-interchange] {
+			background: none!important;
+		}
+	}
+	#aronHomeBig {
+		display: none;
+	}
+	// FOOTER
+	#getConnected, #siteFooter {
+		display: none;
+	}
+}

@@ -1,0 +1,144 @@
+<div ng-attr-id="pageId-{{portfolioVm.page.id}}" class="grid-x">
+	<section class="small-16 cell">
+		<h1>{{portfolioVm.page.title.rendered}}</h1>
+		<div ng-show="portfolioVm.showLoader" class="text-center"><img src="{{ mvm.shortPath }}img/svg-loader.svg" /></div>
+		<div ng-bind-html="portfolioVm.page.content.rendered | to_trusted"></div>
+	</section>
+</div>
+<div class="grid-x align-center portfolioSite" ng-repeat="listing in portfolioVm.listing.portfolio_setup">
+	<div class="small-16 medium-14 large-11 cell callout secondary text-center">
+		<h3 class="text-center">{{ listing.site_name }}</h3>
+		<div class="grid-x align-center">
+			<div class="small-16 medium-8 cell">
+				<a ng-click="portfolioVm.alertSomething()" aria-haspopup="true">
+					<img ng-src="{{ mvm.shortPath }}img/portfolio/desktop/site_{{ listing.site_tag }}.png" ng-attr-alt="{{ listing.site_name }} Desktop View">
+				<br />
+					<span><i class="fa fa-desktop" aria-hidden="true"></i> View desktop</span>
+				</a>
+			</div>
+			<div class="small-16 medium-8 cell" ng-if="listing.has_mobile">
+				<a ng-attr-data-open="portModalSm_{{ listing.site_tag }}" aria-haspopup="true"><img ng-src="{{mvm.shortPath}}img/portfolio/mobile/site_{{ listing.site_tag }}.png" ng-attr-alt="{{ listing.site_name }} Mobile View"><br />
+					<span><i class="fa fa-mobile" aria-hidden="true"></i> View mobile</span>
+				</a>
+			</div>
+		</div>
+		<div class="grid-x" ng-if="listing.site_url">
+			<div class="small-16 cell">
+				<a ng-href="{{ listing.site_url }}" target="_blank">
+					<span><i class="fa fa-external-link" aria-hidden="true"></i> View live site</span>
+				</a>
+			</div>
+		</div>
+	</div>
+	<script type="text/ng-template" id="myModalContent.html">
+		<div class="large reveal modal-container" ng-attr-id="bpModalDesktop_{{ listing.site_tag }}">
+			<section class="text-center">
+				<h3 class="lightText">Desktop View</h3>
+				<a class="button secondary">Switch to Mobile Site</a>
+				<a class="button secondary" ng-href="{{ mvm.shortPath }}img/portfolio/mobile/full_size/site_{{ listing.site_tag }}.jpg" target="_blank"><i class="fa fa-external-link" aria-hidden="true"></i> Full Screenshot</a><br />
+				<img ng-src="{{ mvm.shortPath }}img/portfolio/desktop/full_size/site_{{ listing.site_tag }}.jpg" ng-attr-alt="{{ listing.site_name }} Desktop Full View" />
+			</section>
+			<button class="close-button" aria-label="Close modal" type="button">
+			<span aria-hidden="true">&times;</span>
+			</button>
+		</div>
+	</script>
+</div>
+
+	<!--
+		BEGIN: Modals Layout.
+		
+		Our simple modal system makes the assumption that only one modal window can be
+		open at a time. I find this to be a very reasonable assumption for 99% of use-
+		cases. And, I'd rather keep it simple and work around the rare use-case in some
+		other fashion (such as a multi-state modal).
+		To remove any "magic", I'm explicitly presenting the control properties rather
+		than trying to hide them behind a compile() step. Notice that rendering a modal
+		is JUST LIKE RENDERING ANY OTHER VIEW - we have a subview variable which we are
+		using to swap modals, or remove modals altogether.
+		The big take-away in the following code is that modal windows aren't a *special*
+		concept. They are views or components that work the same exact way that the rest
+		of your application works! Sure, there are a few more rules, like only one open
+		at a time; but, other than that, there's nothing here that's any different than
+		any other view you will build. It has a Controller, it has a View, and it works
+		with other services to execute its functionality.
+	-->
+<div
+	bn-modals
+	ng-show="subview"
+	class="m-modals"
+	ng-switch="subview">
+
+	<!-- BEGIN: Alert Modal. -->
+	<div
+		ng-switch-when="alert"
+		ng-controller="ModalCtrl"
+		class="modal">
+
+		<p>
+			{{ portfolioVm.message }}
+		</p>
+
+		<p>
+			<a ng-click="close()">Ok, I got it!</a>
+		</p>
+
+		<!-- This is to demonstrate that we can jump from one modal to another. -->
+		<p>
+			<a ng-click="jumpToConfirm()" class="jump">Jump over to the confirm modal</a>
+		</p>
+
+	</div>
+	<!-- END: Alert Modal. -->
+
+
+	<!-- BEGIN: Confirm Modal. -->
+	<div
+		ng-switch-when="confirm"
+		ng-controller="ConfirmModalCtrl"
+		class="modal">
+
+		<p>
+			{{ portfolioVm.message }}
+		</p>
+
+		<p>
+			<a ng-click="confirm()">{{ portfolioVm.confirmButton }}</a>
+			&mdash;
+			<a ng-click="deny()">{{ portfolioVm.denyButton }}</a>
+		</p>
+
+	</div>
+	<!-- END: Confirm Modal. -->
+
+
+	<!-- BEGIN: Prompt Modal. -->
+	<form
+		ng-switch-when="prompt"
+		ng-controller="PromptModalCtrl"
+		ng-submit="submit()"
+		class="modal">
+
+		<p>
+			{{ portfolioVm.message }}
+		</p>
+
+		<p ng-if="errorMessage">
+			<strong>Sorry:</strong> {{ portfolioVm.errorMessage }}
+		</p>
+
+		<p>
+			<input type="text" ng-model="form.input" />
+		</p>
+
+		<p>
+			<a ng-click="submit()">Submit</a>
+			&mdash;
+			<a ng-click="cancel()">Cancel</a>
+		</p>
+
+	</form>
+	<!-- END: Prompt Modal. -->
+
+</div>
+<!-- END: Modals Layout. -->
